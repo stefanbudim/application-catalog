@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Application Catalog</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 10px; }
+    table { border-collapse: collapse; width: 100%; font-size: 12px; }
+    th, td { border: 1px solid #ccc; padding: 2px 4px; text-align: left; vertical-align: middle; }
+    th { background-color: #f0f0f0; }
+    td a { display: inline-block; margin: 1px; font-size: 14px; text-decoration: none; }
+    td { white-space: nowrap; text-align: left; } /* Prevent line breaks */
+    .landing { color: #1E90FF; }   /* blue */
+    .health  { color: #008000;; }   /* green */
+    .info    { color: #FF4500}   /* red */
+    .log     { color: #FF8C00; }   /* orange */
+    .settings { color: #800080; }  /* purple */
+    .misc1   { color: #8B4513; }   /* brown */
+    .misc2   { color: #8B4513; }   /* brown */
+    .misc3   { color: #8B4513; }   /* brown */
+    .misc4   { color: #8B4513; }   /* brown */
+    .misc5   { color: #8B4513; }   /* brown */
+    .misc6   { color: #8B4513; }   /* brown */
+    .misc7   { color: #8B4513; }   /* brown */
+    .misc8   { color: #8B4513; }   /* brown */
+    .misc9   { color: #8B4513; }   /* brown */
+    h1 { font-size: 16px; margin-bottom: 5px; }
+    .legend { font-size: 12px; margin-bottom: 5px; }
+    .legend span { margin-right: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Application Catalog</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2">App</th>
+        {% for stage_name, envs in stage_envs.items() %}
+          <th colspan="{{ envs|length }}">{{ stage_name.title() }}</th>
+        {% endfor %}
+      </tr>
+      <tr>
+        {% for stage_name, envs in stage_envs.items() %}
+          {% for env in envs %}
+            <th>{{ env }}</th>
+          {% endfor %}
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for app_name, app_data in applications.items() %}
+        <tr>
+          <td>{{ app_name }}</td>
+          {% for stage_name, envs in stage_envs.items() %}
+            {% for env in envs %}
+              <td>
+                {% if env in app_data.stages[stage_name].environments %}
+                  {% for url_name, url_template in app_data.urls.items() %}
+
+                    {# Assumption: URL contains application and environment #}
+                    {% set url = url_template.replace("ENVIRONMENT", env).replace("APPLICATION", app_name) %}
+
+                    {% if url_name == "landing-page" %}<a class="landing" href="{{ url }}" title="{{ url_name }}">🏠</a>{% endif %}
+                    {% if url_name == "health" %}<a class="health" href="{{ url }}" title="{{ url_name }}">❤️</a>{% endif %}
+                    {% if url_name == "info" %}<a class="info" href="{{ url }}" title="{{ url_name }}">&#128712;</a>{% endif %}
+                    {% if url_name == "log" %}<a class="log" href="{{ url }}" title="{{ url_name }}">&#128466;</a>{% endif %}
+                    {% if url_name == "misc1" %}<a class="misc1" href="{{ url }}" title="{{ url_name }}">⚙️</a>{% endif %}
+                    {% if url_name == "misc2" %}<a class="misc1" href="{{ url }}" title="{{ url_name }}">⚙️</a>{% endif %}
+                    {% if url_name == "misc3" %}<a class="misc1" href="{{ url }}" title="{{ url_name }}">⚙️</a>{% endif %}
+                    {% if url_name == "misc4" %}<a class="misc1" href="{{ url }}" title="{{ url_name }}">⚙️</a>{% endif %}
+                    {% if url_name == "misc5" %}<a class="misc1" href="{{ url }}" title="{{ url_name }}">⚙️</a>{% endif %}
+                    {% if url_name == "misc6" %}<a class="misc1" href="{{ url }}" title="{{ url_name }}">⚙️</a>{% endif %}
+                    {% if url_name == "misc7" %}<a class="misc1" href="{{ url }}" title="{{ url_name }}">⚙️</a>{% endif %}
+                    {% if url_name == "misc8" %}<a class="misc1" href="{{ url }}" title="{{ url_name }}">⚙️</a>{% endif %}
+                    {% if url_name == "misc9" %}<a class="misc1" href="{{ url }}" title="{{ url_name }}">⚙️</a>{% endif %}
+                  {% endfor %}
+                {% else %}
+                  -
+                {% endif %}
+              </td>
+            {% endfor %}
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Compact Legend -->
+  <div class="legend">
+   URL icons:
+    <span class="landing">🏠 Landing-Page</span>
+    <span class="health">❤️ Health</span>
+    <span class="info">&#128712; Info</span>
+    <span class="log">&#128466; Logs</span>
+    <span class="misc1">⚙️ Misc</span>
+
+  </div>
+
+</body>
+</html>
