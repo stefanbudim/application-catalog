@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-import yaml
+import json
 from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
 
 # Load YAML
-with open("data.yaml") as f:
-    data = yaml.safe_load(f)
+with open("data.json") as f:
+   data = json.load(f)
 
 # --- Select which stages to include ---
 #stages_to_include = ["development", "test", "integration"]
