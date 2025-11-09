@@ -1,2 +1,9 @@
-all:
-	python generate.py
+all: build run
+
+
+build:
+	./gradlew run
+
+run: build
+	./gradlew generateCatalog
+

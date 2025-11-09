@@ -28,9 +28,10 @@ The project generates a table with clickable icons for each URL, making it easy 
 ## Getting Started
 
 1. Clone this repository
-2. Edit your `data.yaml` to add applications and stages
-3. Run `generate.py` to generate `Application-Catalog.html`
-4. Open the HTML file in your browser
+2. Edit your `./app/src/main/resources/data.yaml` to add applications and stages
+3. Run build `./gradlew run`
+4. Run Programm `./gradlew generateCatalog`
+5. Open the HTML file in your browser
 
 ## License
 
