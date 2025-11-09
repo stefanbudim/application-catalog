@@ -23,6 +23,7 @@ The project generates a table with clickable icons for each URL, making it easy 
 - Clickable icons
 - Fully configurable via JSON or YAML
 - Select which stages to include (in `generate.py`)
+- JSON version on branch json
 
 ## Getting Started
 
