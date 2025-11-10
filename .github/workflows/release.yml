@@ -24,6 +24,10 @@ jobs:
 
     - name: Build JAR
       run: ./gradlew fatJar
+    - name: List workspace files
+      run: |
+        echo "Current directory: $(pwd)"
+        find .
 
     - name: Create Release
       uses: softprops/action-gh-release@v2
