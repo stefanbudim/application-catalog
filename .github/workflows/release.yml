@@ -1,0 +1,35 @@
+name: Release JAR
+
+on:
+  push:
+    tags:
+      - 'v*'  # triggers on version tags like v1.0.0
+
+permissions:
+  contents: write  # required to allow creating a release
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up JDK
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '25'  # change to your required version
+
+    - name: Build JAR
+      run: ./gradlew fatJar
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ github.ref_name }}
+        name: Release ${{ github.ref_name }}
+        files: build/libs/application-catalog-${{ github.ref_name }}.jar
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
