@@ -34,7 +34,7 @@ jobs:
       with:
         tag_name: ${{ github.ref_name }}
         name: Release ${{ github.ref_name }}
-        files: build/libs/application-catalog-*.jar
+        files: app/build/libs/application-catalog-*.jar
         #files: build/libs/application-catalog-${{ github.ref_name }}.jar
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
