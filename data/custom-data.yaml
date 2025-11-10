@@ -1,0 +1,107 @@
+---
+applications:
+  app0:
+    stages:
+      development:
+        environments: [DEV01]
+      test:
+        environments: []
+      integration:
+        environments: []
+      user-acceptence-test:
+        environments: []
+      pre-prod:
+        environments: []
+      hotfix:
+        environments: []
+      production:
+        environments: []
+    urls:
+      landing-page: https://APPLICATION-ENVIRONMENT/login
+
+  app1:
+    stages:
+      development:
+        environments: [DEV01, DEV02]
+      test:
+        environments: [TEST01, TEST02, TEST03]
+      integration:
+        environments: [INT01, INT02]
+      user-acceptence-test:
+        environments: [UAT01, UAT02]
+      pre-prod:
+        environments: [PRE01, PRE02]
+      hotfix:
+        environments: [HOTFIX01]
+      production:
+        environments: [PROD01, PROD02, PROD03, PROD04, PROD05, PROD06, PROD07, PROD08, PROD09, PROD10]
+    urls:
+      landing-page: https://APPLICATION-ENVIRONMENT/login
+      health: https://APPLICATION-ENVIRONMENT/health
+      info: https://APPLICATION-ENVIRONMENT/info
+
+  app2:
+    stages:
+      development:
+        environments: [DEV01, DEV02]
+      test:
+        environments: [TEST01, TEST02, TEST03]
+      integration:
+        environments: [INT01, INT02]
+      user-acceptence-test:
+        environments: [UAT01, UAT02]
+      pre-prod:
+        environments: [PRE01, PRE02]
+      hotfix:
+        environments: [HOTFIX01]
+      production:
+        environments: [PROD01, PROD02, PROD03, PROD04, PROD05, PROD06, PROD07, PROD08, PROD09, PROD10]
+    urls:
+      landing-page: https://APPLICATION-ENVIRONMENT/welcome
+
+
+
+  app3:
+    stages:
+      development:
+        environments: [DEV01, DEV02]
+      test:
+        environments: [TEST01]
+      integration:
+        environments: [INT01]
+      user-acceptence-test:
+        environments: [UAT01]
+      pre-prod:
+        environments: [PRE01]
+      hotfix:
+        environments: []
+      production:
+        environments: []
+    urls:
+      landing-page: https://APPLICATION-ENVIRONMENT/welcome
+      health: https://APPLICATION-ENVIRONMENT/health
+      info: https://APPLICATION-ENVIRONMENT/version
+
+
+  app4:
+    stages:
+      development:
+        environments: [DEV01]
+      test:
+        environments: [TEST01]
+      integration:
+        environments: []
+      user-acceptence-test:
+        environments: []
+      pre-prod:
+        environments: []
+      hotfix:
+        environments: []
+      production:
+        environments: []
+    urls:
+      landing-page: https://APPLICATION-ENVIRONMENT/welcome
+      health: https://APPLICATION-ENVIRONMENT/health
+      info: https://APPLICATION-ENVIRONMENT/info
+      log: https://APPLICATION-ENVIRONMENT/logfile
+      misc1: https://APPLICATION-ENVIRONMENT/threaddump

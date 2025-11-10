@@ -50,6 +50,15 @@ tasks.register('generateCatalog', JavaExec) {
     description = 'Generate Application-Catalog.html from data.yaml'
     classpath = sourceSets.main.runtimeClasspath
     mainClass.set('org.example.AppCatalogGenerator')
+    // --- Set working directory to project root ---
+    //By default, JavaExec runs with the project build directory as the working directory. You need to tell it to run with the project root (or wherever data.yaml actually is) as the working directory.
+    //workingDir = project.projectDir
+    //args("--data", "${project.projectDir}/data.yaml")
+    args("--data", "./build/resources/main/data.yaml")
+    args("--output", "../data/Application-Catalog.html")
+    args("--stages", "development,test,integration,production")
+    //args("--view", "../data/custom-view.ftl")
+
 }
 
 // P: dependecies are missing
